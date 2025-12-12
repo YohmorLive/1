@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة Yohmor Live</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Admin Header -->
+    <header class="admin-header">
+        <div class="container">
+            <div class="admin-header-content">
+                <h1>⚙️ لوحة إدارة Yohmor Live</h1>
+                <a href="index.html" class="btn btn-secondary">← العودة للصفحة الرئيسية</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Admin Container -->
+    <div class="admin-container">
+        <div class="container">
+            <!-- Tabs Navigation -->
+            <div class="admin-tabs">
+                <button class="tab-btn active" data-tab="businesses">إدارة الأعمال</button>
+                <button class="tab-btn" data-tab="notifications">إدارة الإشعارات</button>
+                <button class="tab-btn" data-tab="import-export">استيراد/تصدير</button>
+                <button class="tab-btn" data-tab="settings">الإعدادات</button>
+            </div>
+
+            <!-- Tab: Businesses Management -->
+            <div class="tab-content active" id="businesses-tab">
+                <h2>إدارة الأعمال</h2>
+                
+                <div class="admin-form">
+                    <h3>إضافة/تعديل عمل</h3>
+                    <form id="businessForm">
+                        <input type="hidden" id="businessId">
+                        
+                        <div class="form-group">
+                            <label for="businessName">اسم العمل *</label>
+                            <input type="text" id="businessName" required placeholder="مثال: مطعم البلدة">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="businessCategory">الفئة *</label>
+                            <select id="businessCategory" required>
+                                <option value="">اختر فئة</option>
+                                <option value="مطعم">🍽️ مطعم</option>
+                                <option value="خدمات">🔧 خدمات</option>
+                                <option value="متجر">🛍️ متجر</option>
+                                <option value="جمعية">👥 جمعية</option>
+                                <option value="أخرى">📌 أخرى</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="businessDescription">الوصف *</label>
+                            <textarea id="businessDescription" required placeholder="وصف العمل" rows="3"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="businessImage">تحميل الصورة</label>
+                            <input type="file" id="businessImage" accept="image/*">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="businessWhatsapp">رقم واتساب *</label>
+                            <input type="tel" id="businessWhatsapp" required placeholder="+961XXXXXXXX">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="businessAddress">العنوان</label>
+                            <input type="text" id="businessAddress" placeholder="شارع البلدة">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="businessHours">ساعات العمل</label>
+                            <input type="text" id="businessHours" placeholder="8:00 - 18:00">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="businessWebsite">الموقع الإلكتروني</label>
+                            <input type="url" id="businessWebsite" placeholder="https://example.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="businessTags">الوسوم (مفصولة بفواصل)</label>
+                            <input type="text" id="businessTags" placeholder="عائلي, توصيل, حلال">
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">💾 حفظ العمل</button>
+                            <button type="reset" class="btn btn-secondary">🔄 إعادة تعيين</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="admin-list">
+                    <h3>قائمة الأعمال</h3>
+                    <div id="businessesList" class="businesses-list">
+                        <!-- سيتم ملء هذا من JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: Notifications Management -->
+            <div class="tab-content" id="notifications-tab">
+                <h2>إدارة الإشعارات</h2>
+                
+                <div class="admin-form">
+                    <h3>إضافة/تعديل إشعار</h3>
+                    <form id="notificationForm">
+                        <input type="hidden" id="notificationId">
+                        
+                        <div class="form-group">
+                            <label for="notificationTitle">العنوان *</label>
+                            <input type="text" id="notificationTitle" required placeholder="مثال: تحذير: انقطاع مياه">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="notificationMessage">الرسالة *</label>
+                            <textarea id="notificationMessage" required placeholder="نص الإشعار" rows="3"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="notificationDate">التاريخ والوقت</label>
+                            <input type="datetime-local" id="notificationDate">
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox" id="notificationPinned">
+                                تثبيت الإشعار (يظهر أولاً)
+                            </label>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">💾 حفظ الإشعار</button>
+                            <button type="reset" class="btn btn-secondary">🔄 إعادة تعيين</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="admin-list">
+                    <h3>قائمة الإشعارات</h3>
+                    <div id="notificationsList" class="notifications-list">
+                        <!-- سيتم ملء هذا من JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: Import/Export -->
+            <div class="tab-content" id="import-export-tab">
+                <h2>استيراد/تصدير البيانات</h2>
+                
+                <div class="import-export-section">
+                    <div class="import-box">
+                        <h3>📥 استيراد ملف JSON</h3>
+                        <p>اختر ملف JSON لتحميل جميع البيانات (الأعمال والإشعارات والإعدادات)</p>
+                        <input type="file" id="importFile" accept=".json" class="file-input">
+                        <button id="importBtn" class="btn btn-primary">استيراد</button>
+                        <div id="importStatus" class="status-message"></div>
+                    </div>
+
+                    <div class="export-box">
+                        <h3>📤 تصدير ملف JSON</h3>
+                        <p>تحميل نسخة من جميع البيانات الحالية</p>
+                        <button id="exportBtn" class="btn btn-primary">تصدير البيانات</button>
+                        <div id="exportStatus" class="status-message"></div>
+                    </div>
+                </div>
+
+                <div class="data-preview">
+                    <h3>معاينة البيانات الحالية</h3>
+                    <pre id="dataPreview"></pre>
+                </div>
+            </div>
+
+            <!-- Tab: Settings -->
+            <div class="tab-content" id="settings-tab">
+                <h2>الإعدادات</h2>
+                
+                <div class="admin-form">
+                    <h3>إعدادات الموقع</h3>
+                    <form id="settingsForm">
+                        <div class="form-group">
+                            <label for="siteTitle">عنوان الموقع</label>
+                            <input type="text" id="siteTitle" placeholder="Yohmor Live - يحمر لايف">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="siteDescription">وصف الموقع</label>
+                            <textarea id="siteDescription" placeholder="منصة الأعمال والخدمات" rows="3"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="developerName">اسم المطور</label>
+                            <input type="text" id="developerName" placeholder="Mohammad Olleik">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="developerWhatsapp">واتساب المطور</label>
+                            <input type="tel" id="developerWhatsapp" placeholder="+961XXXXXXXX">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="developerInstagram">رابط إنستغرام</label>
+                            <input type="url" id="developerInstagram" placeholder="https://instagram.com/molleik7">
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">💾 حفظ الإعدادات</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="danger-zone">
+                    <h3>⚠️ منطقة الخطر</h3>
+                    <button id="clearAllBtn" class="btn btn-danger">حذف جميع البيانات</button>
+                    <p class="warning-text">تحذير: هذا الإجراء لا يمكن التراجع عنه!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Yohmor Live. جميع الحقوق محفوظة. | Developed by Mohammad Olleik</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="admin.js"></script>
+</body>
+</html>

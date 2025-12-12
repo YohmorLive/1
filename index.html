@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="منصة يحمر لايف - دليل الأعمال والخدمات في بلدة يحمر الشقيف">
+    <title>Yohmor Live - يحمر لايف</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>🍃 Yohmor Live</h1>
+                    <p class="tagline">يحمر لايف - منصة الأعمال والخدمات</p>
+                </div>
+                <div class="header-actions">
+                    <button class="notification-btn" id="notificationBtn">
+                        🔔 الإشعارات
+                        <span class="notification-badge" id="notificationBadge">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="container">
+            <a href="index.html" class="nav-item active">🏠 الرئيسية</a>
+            <a href="about.html" class="nav-item">ℹ️ عن البلدة</a>
+        </div>
+    </nav>
+
+    <!-- Notification Popup -->
+    <div class="notification-popup" id="notificationPopup">
+        <div class="notification-content">
+            <button class="close-btn" id="closeNotification">&times;</button>
+            <h3 id="notificationTitle">إشعار جديد</h3>
+            <p id="notificationMessage"></p>
+            <small id="notificationDate"></small>
+        </div>
+    </div>
+
+    <!-- Search & Filter Section -->
+    <section class="search-section">
+        <div class="container">
+            <div class="search-container">
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    class="search-input" 
+                    placeholder="ابحث عن عمل أو خدمة..."
+                    autocomplete="off"
+                >
+                <span class="search-icon">🔍</span>
+            </div>
+
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">
+                    الكل
+                </button>
+                <button class="filter-btn" data-filter="مطعم">
+                    🍽️ مطعم
+                </button>
+                <button class="filter-btn" data-filter="خدمات">
+                    🔧 خدمات
+                </button>
+                <button class="filter-btn" data-filter="متجر">
+                    🛍️ متجر
+                </button>
+                <button class="filter-btn" data-filter="جمعية">
+                    👥 جمعية
+                </button>
+            </div>
+
+            <div class="sort-container">
+                <label for="sortSelect">ترتيب:</label>
+                <select id="sortSelect" class="sort-select">
+                    <option value="newest">الأحدث</option>
+                    <option value="name">اسم العمل</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <!-- Businesses Grid -->
+    <section class="businesses-section">
+        <div class="container">
+            <div class="businesses-grid" id="businessesGrid">
+                <!-- سيتم ملء هذا من JavaScript -->
+            </div>
+            <div class="no-results" id="noResults" style="display: none;">
+                <p>لم يتم العثور على نتائج. جرّب كلمات بحث مختلفة.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Detail Modal -->
+    <div class="modal" id="businessModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <div class="modal-body">
+                <img id="modalImage" src="" alt="" class="modal-image">
+                <div class="modal-info">
+                    <h2 id="modalName"></h2>
+                    <p class="modal-category" id="modalCategory"></p>
+                    <p id="modalDescription"></p>
+                    
+                    <div class="modal-details">
+                        <div class="detail-item">
+                            <strong>📍 العنوان:</strong>
+                            <p id="modalAddress"></p>
+                        </div>
+                        <div class="detail-item">
+                            <strong>⏰ ساعات العمل:</strong>
+                            <p id="modalHours"></p>
+                        </div>
+                    </div>
+
+                    <div class="modal-actions">
+                        <a id="modalWhatsapp" href="#" class="btn btn-primary" target="_blank">
+                            💬 تواصل عبر واتساب
+                        </a>
+                        <a id="modalWebsite" href="#" class="btn btn-secondary" target="_blank" style="display: none;">
+                            🌐 الموقع الإلكتروني
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>عن المنصة</h4>
+                    <p>منصة يحمر لايف التابعة لجمعية أمواج العطاء الخيرية، تجمع كل الأعمال والخدمات في بلدة يحمر الشقيف في مكان واحد.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>تطوير وتصميم</h4>
+                    <p><strong>Mohammad Olleik</strong></p>
+                    <div class="developer-links">
+                        <a href="https://wa.me/96171101381" target="_blank" title="واتساب">💬 WhatsApp</a>
+                        <a href="https://instagram.com/molleik7" target="_blank" title="إنستغرام">📸 Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Yohmor Live. جميع الحقوق محفوظة. | Developed by Mohammad Olleik</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
